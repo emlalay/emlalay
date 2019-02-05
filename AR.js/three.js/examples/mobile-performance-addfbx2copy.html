@@ -194,11 +194,12 @@
 // mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.11;
 // mesh.rotation.x = 4.76;
 // mesh.rotation.y = 3.09;
+// scene.add(mesh);
 geometry = new THREE.IcosahedronGeometry(136.88, 0);
 material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
 mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
-// scene.add(mesh);
+mesh.position.y=0.5
+arWorldRoot.add( mesh );
 
 
         // geometry = new THREE.IcosahedronGeometry(.3, 0); //edit scale (in this code a scale of 1 = size of target image)
