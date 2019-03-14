@@ -219,21 +219,21 @@
         //USE THIS ONE FOR AN ANIMATIUON
         ///////////////////////////////////////////////////////////
         // add a fbx model with animation
-        var loader = new THREE.FBXLoader();
-        loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
-            object.mixer = new THREE.AnimationMixer( object );
-            mixers.push( object.mixer );
-            var action = object.mixer.clipAction( object.animations[ 0 ] );
-            action.play();
-            object.traverse( function ( child ) {
-                if ( child.isMesh ) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-            } );
-            object.scale.set(.02, .02, .02);
-            arWorldRoot.add( object );
-        } );
+        // var loader = new THREE.FBXLoader();
+        // loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
+        //     object.mixer = new THREE.AnimationMixer( object );
+        //     mixers.push( object.mixer );
+        //     var action = object.mixer.clipAction( object.animations[ 0 ] );
+        //     action.play();
+        //     object.traverse( function ( child ) {
+        //         if ( child.isMesh ) {
+        //             child.castShadow = true;
+        //             child.receiveShadow = true;
+        //         }
+        //     } );
+        //     object.scale.set(.02, .02, .02);
+        //     arWorldRoot.add( object );
+        // } );
         //end fbx code
         ///////////////////////////////////////////////////////////
         
@@ -306,7 +306,7 @@
                     .setMaterials( materials )
                     .setPath( '../augmented-systems/' )
                     .load( 'hal_robot.obj', function ( object ) {
-                        object.scale.set(.4, .4, .4);
+                        object.scale.set(.1, .1, .1);
                         arWorldRoot.add( object );
                     }, onProgress, onError );
             } );
