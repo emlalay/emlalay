@@ -250,7 +250,7 @@
          };
 
          var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../augmented-systems/hal_robot.jpeg' );
+         var texture = textureLoader.load( '../../augmented-systems/hal_robot.jpg' );
 
          // obj model
          var onProgress = function ( xhr ) {
@@ -278,7 +278,7 @@
 
  //					object.position.y = - 95;
  //					scene.add( object );
-             object.scale.set(.02, .02, .02);
+             object.scale.set(.01, .01, .01);
              arWorldRoot.add( object );
 
          }, onProgress, onError );
