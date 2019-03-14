@@ -216,7 +216,7 @@
         // end taurus code
        /////////////////////////////////////////////////////////
         
-        
+        //USE THIS ONE FOR AN ANIMATIUON
         ///////////////////////////////////////////////////////////
         // add a fbx model with animation
         var loader = new THREE.FBXLoader();
@@ -250,7 +250,7 @@
          };
 
          var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
+         var texture = textureLoader.load( '../../augmented-systems/hal_robot.jpeg' );
 
          // obj model
          var onProgress = function ( xhr ) {
@@ -264,7 +264,7 @@
          };
 
          var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../data/data/male02/male02.obj', function ( object ) {
+         loader.load( '../../augmented-systems/hal_robot.obj', function ( object ) {
 
              object.traverse( function ( child ) {
 
