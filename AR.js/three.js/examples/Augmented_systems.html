@@ -306,7 +306,7 @@
                     .setMaterials( materials )
                     .setPath( '../augmented-systems/' )
                     .load( 'hal_robot.obj', function ( object ) {
-                        object.scale.set(.3, .3, .3);
+                        object.scale.set(.3, 1, .3);
                         arWorldRoot.add( object );
                     }, onProgress, onError );
             } );
