@@ -264,7 +264,7 @@
          };
 
          var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../augmented-systems/hal_robot.obj', function ( object ) {
+         loader.load( '../../augmented-systems/hal_robot.mtl', function ( object ) {
 
              object.traverse( function ( child ) {
 
@@ -278,7 +278,7 @@
 
  //					object.position.y = - 95;
  //					scene.add( object );
-             object.scale.set(5, 5, 5);
+             object.scale.set(.2, .2, .2);
              arWorldRoot.add( object );
 
          }, onProgress, onError );
