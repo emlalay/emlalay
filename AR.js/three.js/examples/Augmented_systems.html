@@ -296,7 +296,7 @@
                 console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
             }
         };
-        var onError = function () { };
+        var onError = function () { 
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
             .setPath( '../augmented-systems/' )
@@ -310,7 +310,7 @@
                         arWorldRoot.add( object );
                     }, onProgress, onError );
             } );
-        
+        };
 
 
          //end obj2 code
