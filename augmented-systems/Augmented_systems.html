@@ -11,16 +11,16 @@
 <script src="vendor/three.js/examples/js/libs/stats.min.js"></script>
 
 <!-- import the ar.js library -->
-<script src="../build/ar.js"></script>
+<script src="build/ar.js"></script>
 
 
 <!-- sets the local directory (the code '../' navigates up one directory from exmples to three.js) -->
-<script>THREEx.ArToolkitContext.baseURL = '../'</script>
+<script>THREEx.ArToolkitContext.baseURL = './'</script>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 
     <!-- imports libraries to import fbx animations -->
-    <script src="../build/three.js"></script>
+    <script src="build/three.js"></script>
     
     <script src="js/loaders/OBJLoader.js"></script>
     <script src="js/loaders/MTLLoader.js"></script>
@@ -120,7 +120,7 @@
         ////////////////////////////////////////////////////////////////////////////////
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
-            cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../augmented-systems/camera_para.dat',
+            cameraParametersUrl: THREEx.ArToolkitContext.baseURL + 'camera_para.dat',
             detectionMode: 'mono',
             maxDetectionRate: 30,
             canvasWidth: 80*3,
@@ -148,7 +148,7 @@
             ////////////////////////////////////////////////////////////////////////////////
             //   Add your custom image here and comment out existing file (hiro or kanji)
             ////////////////////////////////////////////////////////////////////////////////
-            patternUrl : THREEx.ArToolkitContext.baseURL + '../augmented-systems/patt.hiro'
+            patternUrl : THREEx.ArToolkitContext.baseURL + 'patt.hiro'
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
         // build smoothedControls
@@ -298,12 +298,12 @@
         var onError = function () { };
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
-            .setPath( '../augmented-systems/' )
+            .setPath( './' )
             .load( 'hal_robot.mtl', function ( materials ) {
                 materials.preload();
                 new THREE.OBJLoader()
                     .setMaterials( materials )
-                    .setPath( '../augmented-systems/' )
+                    .setPath( './' )
                     .load( 'hal_robot.obj', function ( object ) {
                         object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
