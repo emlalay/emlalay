@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <title>AR on the web for SJSU</title>
@@ -34,7 +35,6 @@
     <!--ALREADY IMPORTED-- <script src="js/libs/stats.min.js"></script> -->
     
     <script>
-        console.log("hello - Start");
         
         if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
         
@@ -126,8 +126,6 @@
             canvasWidth: 80*3,
             canvasHeight: 60*3,
         })
-        console.log("hello - load camera_para");
-        console.log(THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat');
         // initialize it
         arToolkitContext.init(function onCompleted(){
             // copy projection matrix to camera
@@ -153,8 +151,6 @@
             patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro'
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
-        console.log("hello - load patt.hiro:");
-        console.log(THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro');
         // build smoothedControls
         var smoothedRoot = new THREE.Group()
         scene.add(smoothedRoot)
@@ -166,7 +162,6 @@
         onRenderFcts.push(function(delta){
             smoothedControls.update(markerRoot)
         })
-        console.log("line 174");
         //////////////////////////////////////////////////////////////////////////////////
         //      add objects in the scene
         //      to comment out or un comment multiple lines select lines and press command + /
@@ -177,7 +172,7 @@
         var geometry, material, mesh;
         
 //        ///////////////////////////////////////////////////////////
-       // add a static cube
+//        // add a static cube
         // geometry = new THREE.CubeGeometry(1,1,1);
         // material = new THREE.MeshNormalMaterial({
         //     transparent : true,
@@ -187,7 +182,7 @@
         // mesh = new THREE.Mesh( geometry, material );
         // mesh.position.y  = geometry.parameters.height/2
         // arWorldRoot.add(mesh);
-       // end cube code
+//        // end cube code
 //        ///////////////////////////////////////////////////////////
         
     
@@ -200,9 +195,9 @@
         // material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
         // mesh = new THREE.Mesh(geometry, material);
         
-        //Keep these lines
-        //mesh.position.y   = 0.5 //position y equals how far away from target 
-        //arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
+        // //Keep these lines
+        // mesh.position.y  = 0.5 //position y equals how far away from target 
+        // arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
         //end icosphere code
         ///////////////////////////////////////////////////////////
         
@@ -220,7 +215,7 @@
         // end taurus code
        /////////////////////////////////////////////////////////
         
-        //USE THIS ONE FOR AN ANIMATIUON
+        
         ///////////////////////////////////////////////////////////
         // add a fbx model with animation
         // var loader = new THREE.FBXLoader();
@@ -245,65 +240,78 @@
         ///////////////////////////////////////////////////////////
          //add obj model (static)
          // obj texture from jpg
-         var manager = new THREE.LoadingManager();
-         console.log("line 255");
-         manager.onProgress = function ( item, loaded, total ) {
-             console.log( item, loaded, total );
-         };
-         var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../../augmented-systems/hal_robot.obj' );
-         console.log("hello - load texture:");
-         console.log(texture);
-         // obj model
-         var onProgress = function ( xhr ) {
-             if ( xhr.lengthComputable ) {
-                 var percentComplete = xhr.loaded / xhr.total * 100;
-                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
-             }
-         };
-         var onError = function ( xhr ) {
-         };
-         var loader = new THREE.OBJLoader( manager );
-         console.log("hello - load the robot obj");
-         loader.load( '../../../augmented-systems/hal_robot.obj', function ( object ) {
-             object.traverse( function ( child ) {
-                 if ( child instanceof THREE.Mesh ) {
-                     child.material.map = texture;
-                 }
-             } );
- //                 object.position.y = - 95;
- //                 scene.add( object );
-             object.scale.set(.2, .2, .2);
-             arWorldRoot.add( object );
-         }, onProgress, onError );
+
+ //         var manager = new THREE.LoadingManager();
+ //         manager.onProgress = function ( item, loaded, total ) {
+
+ //             console.log( item, loaded, total );
+
+ //         };
+
+ //         var textureLoader = new THREE.TextureLoader( manager );
+ //         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
+
+ //         // obj model
+ //         var onProgress = function ( xhr ) {
+ //             if ( xhr.lengthComputable ) {
+ //                 var percentComplete = xhr.loaded / xhr.total * 100;
+ //                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
+ //             }
+ //         };
+
+ //         var onError = function ( xhr ) {
+ //         };
+
+ //         var loader = new THREE.OBJLoader( manager );
+ //         loader.load( '../../data/data/male02/male02.obj', function ( object ) {
+
+ //             object.traverse( function ( child ) {
+
+ //                 if ( child instanceof THREE.Mesh ) {
+
+ //                     child.material.map = texture;
+
+ //                 }
+
+ //             } );
+
+ // //                  object.position.y = - 95;
+ // //                  scene.add( object );
+ //             object.scale.set(.02, .02, .02);
+ //             arWorldRoot.add( object );
+
+ //         }, onProgress, onError );
+
          //end obj code
         ///////////////////////////////////////////////////////////
-        //USE THIS CODE FOR EXPORTED CAMERA FROM MAYA
+        
         
          ///////////////////////////////////////////////////////////
          //add obj model2 (static) with material textures
+
         var onProgress = function ( xhr ) {
             if ( xhr.lengthComputable ) {
                 var percentComplete = xhr.loaded / xhr.total * 100;
                 console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
             }
         };
-        console.log("hello - ErrFunc");
-        var onError = function () { 
+        var onError = function () { };
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
-            .setPath( '../../../augmented-systems/' )
-            .load( 'hal_robot.mtl', function ( materials ) {
+            .setPath( '../../data/data/' )
+            .load( 'object1_v2.mtl', function ( materials ) {
                 materials.preload();
                 new THREE.OBJLoader()
                     .setMaterials( materials )
-                    .setPath( '../../../augmented-systems/' )
-                    .load( 'hal_robot.obj', function ( object ) {
-                        object.scale.set(.3, .3, .3);
+                    .setPath( '../../data/data/' )
+                    .load( 'object1_v2.obj', function ( object ) {
+                        object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
                     }, onProgress, onError );
             } );
-        };
+        
+
+
          //end obj2 code
         ///////////////////////////////////////////////////////////
         
@@ -324,6 +332,7 @@
             renderer.render( scene, camera );
             stats2.update();
         })
+
         // run the rendering loop
         var lastTimeMsec= null
         requestAnimationFrame(function animate(nowMsec){
@@ -351,5 +360,5 @@
                 renderer.render( scene, camera );
                 stats.update();
             }
-console.log(texture);
+    
 </script></body>
