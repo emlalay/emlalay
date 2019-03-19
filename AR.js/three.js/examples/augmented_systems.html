@@ -287,7 +287,7 @@
         
         
          ///////////////////////////////////////////////////////////
-         //add obj model2 (static) with material textures
+         //add obj model2 (static) with material textures forcetest
 
         var onProgress = function ( xhr ) {
             if ( xhr.lengthComputable ) {
@@ -298,12 +298,12 @@
         var onError = function () { };
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
-            .setPath( '../augmented-systems/' )
+            .setPath( '../../../augmented-systems/' )
             .load( 'hal_robot.mtl', function ( materials ) {
                 materials.preload();
                 new THREE.OBJLoader()
                     .setMaterials( materials )
-                    .setPath( '../augmented-systems/' )
+                    .setPath( '../../../augmented-systems/' )
                     .load( 'hal_robot.obj', function ( object ) {
                         object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
