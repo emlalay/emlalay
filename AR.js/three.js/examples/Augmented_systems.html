@@ -43,13 +43,13 @@
         var stats;
     
         
-	//////////////////////////////////////////////////////////////////////////////////
-	//		Init
+    //////////////////////////////////////////////////////////////////////////////////
+    //      Init
     //      sets up how the webpage will be diplayed (fullscreen)
-	//////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////
         // init renderer
-        var renderer	= new THREE.WebGLRenderer({
-            // antialias	: true,
+        var renderer    = new THREE.WebGLRenderer({
+            // antialias    : true,
             alpha: true
         });
         renderer.setClearColor(new THREE.Color('lightgrey'), 0)
@@ -62,7 +62,7 @@
         // array of functions for the rendering loop
         var onRenderFcts= [];
         // init scene and camera
-        var scene	= new THREE.Scene();
+        var scene   = new THREE.Scene();
         
         light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
         light.position.set( 0, 200, 0 );
@@ -80,7 +80,7 @@
         container = document.createElement( 'div' );
         document.body.appendChild( container );
         //////////////////////////////////////////////////////////////////////////////////
-        //		Initialize a basic camera
+        //      Initialize a basic camera
         //////////////////////////////////////////////////////////////////////////////////
         //      Create a camera
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
@@ -95,11 +95,11 @@
             
             // to read from an image uncomment two lines below (remove // at the beginning of each line)
             // sourceType : 'image',
-            // sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/images/img.jpg',		
+            // sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/images/img.jpg',      
             
             // to read from a video uncomment two lines below (remove // at the beginning of each line)
             // sourceType : 'video',
-            // sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/videos/headtracking.mp4',		
+            // sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/videos/headtracking.mp4',     
         })
         arToolkitSource.init(function onReady(){
             onResize()
@@ -109,18 +109,18 @@
             onResize()
         })
         function onResize(){
-            arToolkitSource.onResize()	
-            arToolkitSource.copySizeTo(renderer.domElement)	
+            arToolkitSource.onResize()  
+            arToolkitSource.copySizeTo(renderer.domElement) 
             if( arToolkitContext.arController !== null ){
-                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
-            }	
+                arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)    
+            }   
         }
         ////////////////////////////////////////////////////////////////////////////////
         //          initialize arToolkitContext
         ////////////////////////////////////////////////////////////////////////////////
         // create atToolkitContext
         var arToolkitContext = new THREEx.ArToolkitContext({
-            cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
+            cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../augmented-systems/camera_para.dat',
             detectionMode: 'mono',
             maxDetectionRate: 30,
             canvasWidth: 80*3,
@@ -133,7 +133,7 @@
         })
         // update artoolkit on every frame
         onRenderFcts.push(function(){
-            if( arToolkitSource.ready === false )	return
+            if( arToolkitSource.ready === false )   return
             arToolkitContext.update( arToolkitSource.domElement )
         })
         ////////////////////////////////////////////////////////////////////////////////
@@ -148,8 +148,7 @@
             ////////////////////////////////////////////////////////////////////////////////
             //   Add your custom image here and comment out existing file (hiro or kanji)
             ////////////////////////////////////////////////////////////////////////////////
-            patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro'
-
+            patternUrl : THREEx.ArToolkitContext.baseURL + '../augmented-systems/patt.hiro'
             // patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji'
         })
         // build smoothedControls
@@ -164,7 +163,7 @@
             smoothedControls.update(markerRoot)
         })
         //////////////////////////////////////////////////////////////////////////////////
-        //		add objects in the scene
+        //      add objects in the scene
         //      to comment out or un comment multiple lines select lines and press command + /
         //      you can copy source code for simple shape from the three.js playground here: http://threejsplaygnd.brangerbriz.net/gui/
         //      for more on using 3D models with AR.js and A-Frame see here: https://medium.com/@akashkuttappa/using-3d-models-with-ar-js-and-a-frame-84d462efe498
@@ -181,7 +180,7 @@
         //     side: THREE.DoubleSide
         // }); 
         // mesh = new THREE.Mesh( geometry, material );
-        // mesh.position.y	= geometry.parameters.height/2
+        // mesh.position.y  = geometry.parameters.height/2
         // arWorldRoot.add(mesh);
 //        // end cube code
 //        ///////////////////////////////////////////////////////////
@@ -196,9 +195,9 @@
         // material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
         // mesh = new THREE.Mesh(geometry, material);
         
-        //Keep these lines
-        mesh.position.y	= 0.5 //position y equals how far away from target 
-        arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
+        // //Keep these lines
+        // mesh.position.y  = 0.5 //position y equals how far away from target 
+        // arWorldRoot.add( mesh ); //instead of adding mesh to the scene right away we add only when the target is detected
         //end icosphere code
         ///////////////////////////////////////////////////////////
         
@@ -208,7 +207,7 @@
         // geometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
         // material = new THREE.MeshNormalMaterial(); 
         // mesh = new THREE.Mesh( geometry, material );
-        // mesh.position.y	= 0.5
+        // mesh.position.y  = 0.5
         // arWorldRoot.add( mesh );
         // onRenderFcts.push(function(){
         //     mesh.rotation.x += 0.1
@@ -216,7 +215,7 @@
         // end taurus code
        /////////////////////////////////////////////////////////
         
-        //USE THIS ONE FOR AN ANIMATIUON
+        
         ///////////////////////////////////////////////////////////
         // add a fbx model with animation
         // var loader = new THREE.FBXLoader();
@@ -242,50 +241,50 @@
          //add obj model (static)
          // obj texture from jpg
 
-         var manager = new THREE.LoadingManager();
-         manager.onProgress = function ( item, loaded, total ) {
+ //         var manager = new THREE.LoadingManager();
+ //         manager.onProgress = function ( item, loaded, total ) {
 
-             console.log( item, loaded, total );
+ //             console.log( item, loaded, total );
 
-         };
+ //         };
 
-         var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../augmented-systems/hal_robot.obj' );
+ //         var textureLoader = new THREE.TextureLoader( manager );
+ //         var texture = textureLoader.load( '../../data/data/cheetah.jpeg' );
 
-         // obj model
-         var onProgress = function ( xhr ) {
-             if ( xhr.lengthComputable ) {
-                 var percentComplete = xhr.loaded / xhr.total * 100;
-                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
-             }
-         };
+ //         // obj model
+ //         var onProgress = function ( xhr ) {
+ //             if ( xhr.lengthComputable ) {
+ //                 var percentComplete = xhr.loaded / xhr.total * 100;
+ //                 console.log( Math.round(percentComplete, 2) + '% downloaded' );
+ //             }
+ //         };
 
-         var onError = function ( xhr ) {
-         };
+ //         var onError = function ( xhr ) {
+ //         };
 
-         var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../augmented-systems/hal_robot.obj', function ( object ) {
+ //         var loader = new THREE.OBJLoader( manager );
+ //         loader.load( '../../data/data/male02/male02.obj', function ( object ) {
 
-             object.traverse( function ( child ) {
+ //             object.traverse( function ( child ) {
 
-                 if ( child instanceof THREE.Mesh ) {
+ //                 if ( child instanceof THREE.Mesh ) {
 
-                     child.material.map = texture;
+ //                     child.material.map = texture;
 
-                 }
+ //                 }
 
-             } );
+ //             } );
 
- //					object.position.y = - 95;
- //					scene.add( object );
-             object.scale.set(.2, .2, .2);
-             arWorldRoot.add( object );
+ // //                  object.position.y = - 95;
+ // //                  scene.add( object );
+ //             object.scale.set(.02, .02, .02);
+ //             arWorldRoot.add( object );
 
-         }, onProgress, onError );
+ //         }, onProgress, onError );
 
          //end obj code
         ///////////////////////////////////////////////////////////
-        //USE THIS CODE FOR EXPORTED CAMERA FROM MAYA
+        
         
          ///////////////////////////////////////////////////////////
          //add obj model2 (static) with material textures
@@ -296,7 +295,7 @@
                 console.log( Math.round( percentComplete, 2 ) + '% downloaded' );
             }
         };
-        var onError = function () { 
+        var onError = function () { };
         THREE.Loader.Handlers.add( /\.dds$/i, new THREE.DDSLoader() );
         new THREE.MTLLoader()
             .setPath( '../augmented-systems/' )
@@ -306,11 +305,11 @@
                     .setMaterials( materials )
                     .setPath( '../augmented-systems/' )
                     .load( 'hal_robot.obj', function ( object ) {
-                        object.scale.set(.3, .3, .3);
+                        object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
                     }, onProgress, onError );
             } );
-        };
+        
 
 
          //end obj2 code
@@ -322,10 +321,10 @@
         stats = new Stats();
         container.appendChild( stats.dom );
         
-	//////////////////////////////////////////////////////////////////////////////////
-	//		render the whole thing on the page
-	//////////////////////////////////////////////////////////////////////////////////
-	
+    //////////////////////////////////////////////////////////////////////////////////
+    //      render the whole thing on the page
+    //////////////////////////////////////////////////////////////////////////////////
+    
         var stats2 = new Stats();
         document.body.appendChild( stats2.dom );
         // render the scene
@@ -340,9 +339,9 @@
             // keep looping
             requestAnimationFrame( animate );
             // measure time
-            lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
-            var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
-            lastTimeMsec	= nowMsec
+            lastTimeMsec    = lastTimeMsec || nowMsec-1000/60
+            var deltaMsec   = Math.min(200, nowMsec - lastTimeMsec)
+            lastTimeMsec    = nowMsec
             // call each update function
             onRenderFcts.forEach(function(onRenderFct){
                 onRenderFct(deltaMsec/1000, nowMsec/1000)
@@ -352,14 +351,14 @@
     animate();
         
         function animate() {
-				requestAnimationFrame( animate );
-				if ( mixers.length > 0 ) {
-					for ( var i = 0; i < mixers.length; i ++ ) {
-						mixers[ i ].update( clock.getDelta() );
-					}
-				}
-				renderer.render( scene, camera );
-				stats.update();
-			}
+                requestAnimationFrame( animate );
+                if ( mixers.length > 0 ) {
+                    for ( var i = 0; i < mixers.length; i ++ ) {
+                        mixers[ i ].update( clock.getDelta() );
+                    }
+                }
+                renderer.render( scene, camera );
+                stats.update();
+            }
     
 </script></body>
