@@ -271,20 +271,18 @@
 
                      child.material.map = texture;
 
-                     mesh.rotation.set(new THREE.Vector3( 0, 0, Math.PI / 2));
-
                  }
 
              } );
 
  //					object.position.y = - 95;
  //					scene.add( object );
-             object.scale.set(.7, .7, .7);
+             object.scale.set(.6, .6, .6);
              arWorldRoot.add( object );
              //addrotate
-             onRenderFcts.push(function(){
-            mesh.rotation.x += 0.1
-        })
+        //      onRenderFcts.push(function(){
+        //     mesh.rotation.x += 0.1
+        // })
         //endrotate
 
          }, onProgress, onError );
