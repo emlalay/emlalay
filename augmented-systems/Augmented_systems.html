@@ -303,7 +303,7 @@
                 materials.preload();
                 new THREE.OBJLoader()
                     .setMaterials( materials )
-                    .setPath( '../../data/' )
+                    .setPath( '../../data/data/' )
                     .load( 'obj1_v2.obj', function ( object ) {
                         object.scale.set(.4, .4, .4);
                         arWorldRoot.add( object );
