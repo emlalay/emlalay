@@ -279,6 +279,11 @@
  //					scene.add( object );
              object.scale.set(.7, .7, .7);
              arWorldRoot.add( object );
+             //addrotate
+             onRenderFcts.push(function(){
+            mesh.rotation.x += 0.1
+        })
+        //endrotate
 
          }, onProgress, onError );
 
