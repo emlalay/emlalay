@@ -249,7 +249,7 @@
          };
 
          var textureLoader = new THREE.TextureLoader( manager );
-         var texture = textureLoader.load( '../../../augmented-systems/hal_robot.jpg' );
+         var texture = textureLoader.load( 'hal_robot.jpg' );
 
          // obj model
          var onProgress = function ( xhr ) {
@@ -263,7 +263,7 @@
          };
 
          var loader = new THREE.OBJLoader( manager );
-         loader.load( '../../../augmented-systems/hal_robot.obj', function ( object ) {
+         loader.load( 'hal_robot.obj', function ( object ) {
 
              object.traverse( function ( child ) {
 
